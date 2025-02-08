@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string moveHashesToFront(const string &input) {
+    string hashes, result;
+
+    for (char ch : input) {
+        if (ch == '#') {
+            hashes += ch;
+        } else {
+            result += ch;
+        }
+    }
+
+    return hashes + result;
+}
+
+int main() {
+    string input;
+    cin>>input;
+    string output = moveHashesToFront(input);
+
+    cout << "Transformed String: " << output << endl;
+
+    return 0;
+}
