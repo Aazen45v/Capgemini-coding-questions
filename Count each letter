@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string compressString(const string &input) {
+    if (input.empty()) return input; // Return input directly for clarity
+
+    string compressed = ""; // Store the result
+    char currentChar = input[0]; // Track the current character
+    int count = 1; // Track character count
+
+    // Iterate through the string from the second character
+    for (int i = 1; i < input.length(); i++) {
+        if (input[i] == currentChar) {
+            count++; // Increment count if same character repeats
+        } else {
+            compressed += currentChar; // Append the character
+            if (count > 1) {
+                compressed += to_string(count); // Append count if more than 1
+            }
+            currentChar = input[i]; // Update current character
+            count = 1; // Reset count
+        }
+    }
+
+    // Append the last character and its count (if more than 1)
+    compressed += currentChar;
+    if (count > 1) {
+        compressed += to_string(count);
+    }
+
+    return compressed; // Return the compressed string
+}
+
+int main() {
+    string input1;
+    cin >> input1;
+    cout << "Output 1: " << compressString(input1) << endl;
+
+    return 0;
+}
